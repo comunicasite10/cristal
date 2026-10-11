@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cristal ASMR — sons relaxantes, cristais e experiências sensoriais para desacelerar.">
+  <title>Cristal ASMR | Respire. Sinta. Equilibre.</title>
+  <style>
+    :root {
+      --purple: #51427f;
+      --purple-dark: #302747;
+      --lavender: #e9e2f1;
+      --lavender-light: #f5f1f8;
+      --cream: #fbf9f6;
+      --ink: #39364d;
+      --muted: #777287;
+      --white: #fff;
+      --radius: 18px;
+      --shadow: 0 12px 34px rgba(57, 43, 82, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; object-fit: cover; }
+    .container { width: min(1160px, calc(100% - 40px)); margin-inline: auto; }
+    .eyebrow {
+      color: var(--purple);
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { margin: 0; line-height: 1.15; }
+    h1, h2, .serif { font-family: Georgia, "Times New Roman", serif; font-weight: 500; }
+    h2 { font-size: clamp(2rem, 4vw, 3rem); color: var(--purple-dark); }
+    p { margin: 12px 0 0; color: var(--muted); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      padding: 12px 22px; border-radius: 999px; border: 1px solid var(--purple);
+      background: var(--purple); color: var(--white); font-size: .82rem;
+      font-weight: 800; letter-spacing: .04em; cursor: pointer; transition: .2s ease;
+    }
+    .btn:hover { background: var(--purple-dark); transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--purple); }
+    .btn-outline:hover { color: white; }
+    .site-header {
+      position: sticky; top: 0; z-index: 20; background: rgba(251,249,246,.94);
+      backdrop-filter: blur(12px); border-bottom: 1px solid rgba(81,66,127,.12);
+    }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--purple-dark); }
+    .brand-mark { font-size: 2.25rem; line-height: 1; }
+    .brand-name { font-family: Georgia, serif; letter-spacing: .23em; font-size: 1.1rem; }
+    .brand-sub { display: block; text-align: center; letter-spacing: .48em; font-size: .58rem; font-weight: 700; }
+    .nav-links { display: flex; align-items: center; gap: clamp(14px, 2.5vw, 32px); font-size: .86rem; }
+    .nav-links a:hover { color: var(--purple); }
+    .menu-toggle { display: none; border: 0; background: none; font-size: 1.6rem; color: var(--purple); cursor: pointer; }
+    /* HERO */
+    .hero {
+      min-height: 470px; display: grid; align-items: center; position: relative; overflow: hidden;
+      background: linear-gradient(90deg, rgba(249,245,244,.98) 0%, rgba(249,245,244,.9) 36%, rgba(249,245,244,.1) 72%),
+      url("https://images.unsplash.com/photo-1615485500704-8e990f9900f2?auto=format&fit=crop&w=1800&q=85") center 52% / cover,
+      var(--lavender);
+    }
+    .hero-content { padding-block: 75px; max-width: 590px; }
+    .hero h1 { color: var(--purple-dark); font-size: clamp(3.2rem, 7vw, 5.6rem); letter-spacing: -.045em; margin-top: 8px; }
+    .hero p { max-width: 430px; font-size: 1.08rem; margin-bottom: 25px; }
+    .hero .crystal-symbol { color: var(--purple); font-size: 2rem; }
+    .scroll-cue { display: block; margin-top: 22px; color: var(--purple); font-size: 1.5rem; }
+    section { scroll-margin-top: 88px; }
+    /* SOBRE */
+    .about { padding: 86px 0; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1.05fr .85fr; gap: 38px; align-items: center; }
+    .about-photo { height: 330px; border-radius: 46% 46% 18px 18px; box-shadow: var(--shadow); }
+    .about-copy p { max-width: 570px; }
+    .about-copy .btn { margin-top: 22px; }
+    .benefits { border-left: 1px solid #d9d0e3; padding-left: 26px; display: grid; gap: 24px; }
+    .benefit { display: grid; grid-template-columns: 44px 1fr; gap: 13px; align-items: start; }
+    .benefit-icon { font-size: 1.8rem; color: var(--purple); }
+    .benefit h3 { font-family: Georgia, serif; color: var(--purple); font-size: 1.08rem; }
+    .benefit p { font-size: .85rem; margin-top: 4px; }
+    /* SERVIÇOS */
+    .services { padding: 78px 0 86px; background: var(--lavender-light); text-align: center; }
+    .section-intro { max-width: 690px; margin: 13px auto 32px; }
+    .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .service-card {
+      background: rgba(255,255,255,.9); padding: 28px 20px; border-radius: 15px;
+      box-shadow: 0 8px 24px rgba(57,43,82,.035); transition: transform .2s ease;
+    }
+    .service-card:hover { transform: translateY(-5px); }
+    .service-icon {
+      width: 58px; height: 58px; display: grid; place-items: center; margin: 0 auto 16px;
+      border-radius: 50%; background: var(--lavender); color: var(--purple); font-size: 1.8rem;
+    }
+    .service-card h3 { font-family: Georgia, serif; color: var(--purple-dark); font-size: 1.16rem; }
+    .service-card p { font-size: .88rem; min-height: 54px; margin-bottom: 18px; }
+    .service-card .btn { padding: 9px 17px; font-size: .72rem; }
+    /* GALERIA */
+    .gallery { padding: 84px 0; }
+    .gallery-layout { display: grid; grid-template-columns: .85fr 2fr; gap: 35px; align-items: center; }
+    .gallery-copy p { margin-bottom: 22px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .gallery-grid img { height: 190px; border-radius: 12px; transition: transform .25s ease; }
+    .gallery-grid img:hover { transform: scale(1.025); }
+    /* AVALIAÇÕES */
+    .reviews { padding: 78px 0 85px; background: #f2edf5; text-align: center; }
+    .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 32px; text-align: left; }
+    .review-card { background: white; border-radius: 15px; padding: 25px; box-shadow: var(--shadow); }
+    .review-top { display: flex; align-items: center; gap: 12px; }
+    .avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--lavender); display: grid; place-items: center; font-size: 1.35rem; }
+    .stars { color: #dca33d; letter-spacing: .13em; }
+    .review-card blockquote { padding: 0; margin: 18px 0 12px; color: #68647a; font-size: .93rem; }
+    .review-card cite { color: var(--purple); font-style: normal; font-weight: 800; font-size: .85rem; }
+    /* NEWSLETTER */
+    .newsletter {
+      padding: 68px 20px; text-align: center; color: var(--purple-dark);
+      background: linear-gradient(90deg, rgba(226,214,239,.92), rgba(248,242,249,.95), rgba(226,214,239,.92)),
+      url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1600&q=80") center / cover;
+    }
+    .newsletter-icon { font-size: 1.8rem; }
+    .newsletter h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); margin-top: 6px; }
+    .newsletter p { margin-bottom: 23px; }
+    .signup { display: flex; max-width: 540px; margin: 0 auto; padding: 5px; gap: 6px; background: white; border-radius: 999px; }
+    .signup input { flex: 1; min-width: 0; border: 0; outline: 0; padding: 12px 17px; border-radius: 999px; font: inherit; }
+    .signup button { border: 0; }
+    .form-message { min-height: 24px; font-size: .9rem; color: var(--purple-dark); }
+    /* FOOTER */
+    .site-footer { padding: 32px 0 18px; color: white; background: linear-gradient(120deg, #4c4268, #2f2945); }
+    .footer-main { display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .footer-brand { color: white; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 19px; font-size: .82rem; }
+    .footer-links a:hover { color: #d8c9ed; }
+    .socials { display: flex; gap: 15px; font-size: 1.1rem; }
+    .footer-note { border-top: 1px solid rgba(255,255,255,.18); margin-top: 24px; padding-top: 16px; text-align: center; font-size: .78rem; color: #ded7e9; }
+    @media (max-width: 950px) {
+      .about-grid { grid-template-columns: 1fr 1fr; }
+      .benefits { grid-column: 1 / -1; grid-template-columns: repeat(3, 1fr); border-left: 0; border-top: 1px solid #d9d0e3; padding: 24px 0 0; }
+      .service-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-layout { grid-template-columns: 1fr; }
+      .gallery-grid img { height: 220px; }
+      .footer-main { flex-wrap: wrap; }
+    }
+    @media (max-width: 680px) {
+      .container { width: min(100% - 30px, 1160px); }
+      .nav { min-height: 68px; }
+      .menu-toggle { display: block; }
+      .nav-links {
+        display: none; position: absolute; top: 68px; left: 0; right: 0; padding: 18px 24px 24px;
+        background: var(--cream); border-bottom: 1px solid #e3dce9; flex-direction: column; align-items: stretch;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 8px 0; }
+      .hero { min-height: 530px; background-position: 62% center; }
+      .hero::before { content: ""; position: absolute; inset: 0; background: rgba(250,247,246,.48); }
+      .hero-content { position: relative; padding-block: 72px; }
+      .hero h1 { font-size: clamp(3rem, 14vw, 4.4rem); }
+      .about { padding: 60px 0; }
+      .about-grid { grid-template-columns: 1fr; gap: 25px; }
+      .about-photo { height: 270px; }
+      .benefits { grid-template-columns: 1fr; gap: 20px; }
+      .services, .reviews { padding: 60px 0; }
+      .service-grid { grid-template-columns: 1fr; }
+      .service-card p { min-height: auto; }
+      .gallery { padding: 60px 0; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid img { height: 170px; }
+      .review-grid { grid-template-columns: 1fr; }
+      .signup { border-radius: 18px; flex-direction: column; padding: 8px; }
+      .signup input { width: 100%; }
+      .signup button { width: 100%; }
+      .footer-main { flex-direction: column; align-items: flex-start; }
+      .footer-links { gap: 12px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="Cristal ASMR - início">
+        <span class="brand-mark" aria-hidden="true">♢</span>
+        <span><span class="brand-name">CRISTAL</span><span class="brand-sub">ASMR</span></span>
+      </a>
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+      <nav class="nav-links" id="nav-links" aria-label="Navegação principal">
+        <a href="#inicio">Início</a><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a>
+        <a href="#galeria">Galeria</a><a href="#avaliacoes">Avaliações</a><a href="#newsletter">Newsletter</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="hero-content">
+          <div class="crystal-symbol" aria-hidden="true">♢</div>
+          <div class="eyebrow">Relaxe • Equilibre • Sinta</div>
+          <h1>Cristal ASMR</h1>
+          <p>O som dos cristais, a energia da natureza e a tranquilidade que você merece.</p>
+          <a class="btn" href="#galeria">▶ &nbsp; ASSISTA AGORA</a>
+          <a class="scroll-cue" href="#sobre" aria-label="Conheça o projeto">⌄</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE CRISTAL -->
+    <section class="about" id="sobre">
+      <div class="container about-grid">
+        <img class="about-photo" src="https://images.unsplash.com/photo-1615485500704-8e990f9900f2?auto=format&fit=crop&w=900&q=85" alt="Cristais naturais em um ambiente tranquilo" loading="lazy">
+        <div class="about-copy">
+          <div class="eyebrow">Sobre o Cristal</div>
+          <h2>Mais que pedras,<br> são conexões.</h2>
+          <p>Os cristais são formações naturais que inspiram curiosidade e contemplação. No Cristal ASMR, eles se tornam protagonistas de uma experiência sensorial com sons suaves, texturas delicadas e momentos de tranquilidade.</p>
+          <p>Prepare seu espaço, coloque os fones e permita-se desacelerar por alguns instantes.</p>
+          <a class="btn btn-outline" href="#servicos">SAIBA MAIS&nbsp; →</a>
+        </div>
+        <div class="benefits">
+          <article class="benefit"><span class="benefit-icon" aria-hidden="true">♢</span><div><h3>Energia Natural</h3><p>Conecte-se com a beleza e as texturas únicas de cada cristal.</p></div></article>
+          <article class="benefit"><span class="benefit-icon" aria-hidden="true">♧</span><div><h3>Equilíbrio Emocional</h3><p>Crie um momento de pausa e tranquilidade na sua rotina.</p></div></article>
+          <article class="benefit"><span class="benefit-icon" aria-hidden="true">♡</span><div><h3>Bem-estar</h3><p>Mais espaço para respirar, relaxar e cuidar de você.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section class="services" id="servicos">
+      <div class="container">
+        <div class="eyebrow">— &nbsp; Serviços &nbsp; —</div>
+        <h2>Experiências sonoras com cristais</h2>
+        <p class="section-intro">Explore conteúdos para desacelerar, concentrar-se e descobrir novas texturas sonoras.</p>
+        <div class="service-grid">
+          <article class="service-card"><div class="service-icon" aria-hidden="true">▶</div><h3>Vídeos ASMR</h3><p>Sons relaxantes de cristais, toques suaves e movimentos delicados.</p><a class="btn btn-outline" href="#galeria">VER VÍDEOS&nbsp; →</a></article>
+          <article class="service-card"><div class="service-icon" aria-hidden="true">♢</div><h3>Sons Personalizados</h3><p>Uma seleção de sons e texturas para acompanhar seus momentos de pausa.</p><a class="btn btn-outline" href="#newsletter">SABER MAIS&nbsp; →</a></article>
+          <article class="service-card"><div class="service-icon" aria-hidden="true">♧</div><h3>Meditação Guiada</h3><p>Práticas leves de respiração e atenção plena com ambientação sonora.</p><a class="btn btn-outline" href="#galeria">EXPLORAR&nbsp; →</a></article>
+          <article class="service-card"><div class="service-icon" aria-hidden="true">☆</div><h3>Conteúdo Exclusivo</h3><p>Bastidores, novidades e conteúdos especiais para a comunidade.</p><a class="btn btn-outline" href="#newsletter">PARTICIPAR&nbsp; →</a></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section class="gallery" id="galeria">
+      <div class="container gallery-layout">
+        <div class="gallery-copy">
+          <div class="eyebrow">Galeria</div>
+          <h2>Beleza em cada detalhe</h2>
+          <p>Descubra a magia visual dos cristais e encontre inspiração em suas formas, cores e transparências.</p>
+          <a class="btn btn-outline" href="#newsletter">ACOMPANHE AS NOVIDADES&nbsp; →</a>
+        </div>
+        <div class="gallery-grid">
+          <img src="https://images.unsplash.com/photo-1615485500704-8e990f9900f2?auto=format&fit=crop&w=500&q=80" alt="Cristais em tons naturais" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1515942400420-2b98fed1f515?auto=format&fit=crop&w=500&q=80" alt="Detalhe de uma pedra cristalina" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1612196808214-b7e1d6145a8c?auto=format&fit=crop&w=500&q=80" alt="Pedras decorativas em uma composição" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=500&q=80" alt="Minerais e texturas naturais" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- AVALIAÇÕES -->
+    <section class="reviews" id="avaliacoes">
+      <div class="container">
+        <div class="eyebrow">— &nbsp; Avaliações &nbsp; —</div>
+        <h2>O que dizem nossos inscritos</h2>
+        <p class="section-intro">Uma comunidade que encontra nos sons um convite para desacelerar.</p>
+        <div class="review-grid">
+          <article class="review-card"><div class="review-top"><div class="avatar" aria-hidden="true">👤</div><div><strong>Fernanda S.</strong><div class="stars" aria-label="5 de 5 estrelas">★★★★★</div></div></div><blockquote>“Os vídeos me ajudam a criar um momento tranquilo no fim do dia. Adoro os sons delicados dos cristais!”</blockquote><cite>Inscrita do canal</cite></article>
+          <article class="review-card"><div class="review-top"><div class="avatar" aria-hidden="true">👤</div><div><strong>Lucas O.</strong><div class="stars" aria-label="5 de 5 estrelas">★★★★★</div></div></div><blockquote>“A combinação das imagens com os sons é muito agradável. Perfeito para fazer uma pausa da rotina.”</blockquote><cite>Inscrito do canal</cite></article>
+          <article class="review-card"><div class="review-top"><div class="avatar" aria-hidden="true">👤</div><div><strong>Mariana C.</strong><div class="stars" aria-label="5 de 5 estrelas">★★★★★</div></div></div><blockquote>“Gosto da atmosfera acolhedora e da atenção aos detalhes. Sempre descubro um som novo por aqui.”</blockquote><cite>Inscrita do canal</cite></article>
+        </div>
+        <p style="font-size:.78rem;margin-top:18px">* Depoimentos demonstrativos — substitua por avaliações reais antes de publicar.</p>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter" id="newsletter">
+      <div class="newsletter-icon" aria-hidden="true">✉</div>
+      <div class="eyebrow">Newsletter</div>
+      <h2>Receba conteúdos exclusivos</h2>
+      <p>Seja um dos primeiros a saber sobre novos vídeos, sons e novidades do Cristal ASMR.</p>
+      <form class="signup" id="newsletter-form">
+        <label for="email" class="sr-only" style="position:absolute;left:-9999px">Seu e-mail</label>
+        <input id="email" name="email" type="email" placeholder="Seu melhor e-mail" autocomplete="email" required>
+        <button class="btn" type="submit">INSCREVER-SE</button>
+      </form>
+      <div class="form-message" id="form-message" role="status" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <a class="brand footer-brand" href="#inicio">
+          <span class="brand-mark" aria-hidden="true">♢</span>
+          <span><span class="brand-name">CRISTAL</span><span class="brand-sub">ASMR</span></span>
+        </a>
+        <nav class="footer-links" aria-label="Links do rodapé">
+          <a href="#inicio">Início</a><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a>
+          <a href="#galeria">Galeria</a><a href="#avaliacoes">Avaliações</a><a href="#newsletter">Newsletter</a>
+        </nav>
+        <div class="socials" aria-label="Redes sociais">
+          <a href="https://www.youtube.com/" aria-label="YouTube">▶</a>
+          <a href="https://www.instagram.com/" aria-label="Instagram">◎</a>
+          <a href="https://open.spotify.com/" aria-label="Spotify">♫</a>
+        </div>
+      </div>
+      <div class="footer-note">Respire. Sinta. Equilibre. &nbsp; ♢<br>© <span id="year"></span> Cristal ASMR. Todos os direitos reservados.</div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuButton.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+      menuButton.textContent = isOpen ? '×' : '☰';
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Abrir menu');
+        menuButton.textContent = '☰';
+      });
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.getElementById('newsletter-form').addEventListener('submit', event => {
+      event.preventDefault();
+      const email = document.getElementById('email');
+      const message = document.getElementById('form-message');
+      if (!email.checkValidity()) {
+        email.reportValidity();
+        return;
+      }
+      message.textContent = 'Obrigado pelo interesse! Para receber inscrições, conecte este formulário a uma plataforma de newsletter.';
+      email.value = '';
+    });
+  </script>
+</body>
+</html>
